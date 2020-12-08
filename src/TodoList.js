@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
-import 'antd/dist/antd.css';
-import store from './store';
-import {getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
-import TodoListUI from './TodoListUI';
+import React, { Component } from "react";
+import "antd/dist/antd.css";
+import store from "./redux/store";
+import {
+  getTodoList,
+  getInputChangeAction,
+  getAddItemAction,
+  getDeleteItemAction,
+} from "./redux/actionCreators";
+import TodoListUI from "./TodoListUI";
 // import axios from "axios";
 
 class TodoList extends Component {
@@ -13,19 +18,19 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
-    store.subscribe(this.handleStoreChange)
+    store.subscribe(this.handleStoreChange);
   }
 
   render() {
     return (
-      <TodoListUI 
+      <TodoListUI
         inputValue={this.state.inputValue}
         list={this.state.list}
         handleInputChange={this.handleInputChange}
         handleBtnClick={this.handleBtnClick}
         handleItemDelete={this.handleItemDelete}
       />
-    )
+    );
   }
 
   componentDidMount() {
